@@ -1,43 +1,16 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
-	"os"
-	"os/signal"
-	"text/template"
 
-	"github.com/jorgsouza/webApplication/infra"
-	"github.com/jorgsouza/webApplication/models"
+	"github.com/jorgsouza/webApplication/routes"
+	"github.com/jorgsouza/webApplication/watchdog"
 )
 
 func main() {
-	interrupt := make(chan os.Signal, 1)
-	signal.Notify(interrupt, os.Interrupt, os.Kill)
 
-	go func() {
-		<-interrupt
-		fmt.Println("\n Closing the application...")
+	watchdog.SetupSignalHandling()
 
-		if err := infra.StopDatabaseContainer(); err != nil {
-			fmt.Println("Error when stopping the database container:", err)
-		}
-
-		os.Exit(0)
-	}()
-
-	if err := infra.StartDatabaseContainer(); err != nil {
-		fmt.Println("Error when starting the database container:", err)
-		os.Exit(1)
-	}
-
-	http.HandleFunc("/", index)
+	routes.LoadsRoutes()
 	http.ListenAndServe(":8080", nil)
-}
-
-var temp = template.Must(template.ParseGlob("templates/*.html"))
-
-func index(w http.ResponseWriter, r *http.Request) {
-	allProducts := models.SearchAllProducts()
-	temp.ExecuteTemplate(w, "Index", allProducts)
 }

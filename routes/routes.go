@@ -1,0 +1,11 @@
+package routes
+
+import (
+	"net/http"
+
+	"github.com/jorgsouza/webApplication/controllers"
+)
+
+func LoadsRoutes() {
+	http.HandleFunc("/", controllers.Index)
+}
