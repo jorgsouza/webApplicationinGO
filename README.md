@@ -2,9 +2,10 @@
 
 This repository is exclusively for the study of go lang in a web application
 
-foi utilizado desta forma pois o arquivo yaml não esta na raiz
+As the compose.yaml file is inside the infra folder and not in the root as usual, it's necessary to include `-f infra/compose.yaml`. This way, docker locates the file to upload the container with the correct settings.
+
 `docker compose -f infra/compose.yaml up -d`
-`docker compose -f infra/compose.yaml down` **=>** *Eu deleto a máquina, ou seja perco tudo que foi criado no banco de dados*
+`docker compose -f infra/compose.yaml down` **=>** *Command to delete docker, if you use the command everything will be lost*
 
 ## DataBase
 ### access PostgresSQL
