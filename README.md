@@ -6,7 +6,6 @@ As the compose.yaml file is inside the infra folder and not in the root as usual
 This way, docker locates the file to upload the container with the correct settings.
 
 `docker compose -f infra/compose.yaml up -d`  
-
 `docker compose -f infra/compose.yaml down` **=>** *Command to delete docker, if you use the command everything will be lost*
 
 ## DataBase
@@ -29,7 +28,6 @@ This way, docker locates the file to upload the container with the correct setti
 
 ## docker stop
 `docker ps` => list running containers.  
-
-`docker stop <nome do container>` **=>** *desta forma o banco não será deletado.*
+`docker stop <nome do container>` **=>** *Command to stop container, the container will not be deleted*
 
 
