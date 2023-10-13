@@ -26,8 +26,14 @@ This way, docker locates the file to upload the container with the correct setti
 ### insert data
 `INSERT INTO products (name,description,price,quantity) VALUES ('Glasses', 'Hyper Technology Black Glasses', 999.99, 2)`
 
-## docker stop
+## Stopping Docker Container
 `docker ps` => list running containers.  
 `docker stop <nome do container>` **=>** *Command to stop container, the container will not be deleted*
+
+
+# Run
+`go run main.go`
+
+***NOTE:*** The go application has two .go files inside the infra folder, starDatabase.go and stopDatabase.go which are responsible for raising the container when the application UP or stopping the container when the application is DOWN
 
 
