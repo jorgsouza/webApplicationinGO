@@ -6,7 +6,7 @@ As the compose.yaml file is inside the infra folder and not in the root as usual
 This way, docker locates the file to upload the container with the correct settings.
 
 
-*=>** *The command is used to start Docker Compose services defined in a specific compose file.* **<=**
+**=>** *The command is used to start Docker Compose services defined in a specific compose file.* **<=**
 ```shell
 docker compose -f infra/compose.yaml up -d  
 
