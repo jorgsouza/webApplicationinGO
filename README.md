@@ -8,6 +8,23 @@ This way, docker locates the file to upload the container with the correct setti
 `docker compose -f infra/compose.yaml up -d`  
 `docker compose -f infra/compose.yaml down` **=>** *Command to delete docker, if you use the command everything will be lost*
 
+## .env && compose.yaml
+criei um arquivo .env para adicionar a senha:  
+`POSTGRES_PASSWORD=pass`
+
+
+***Deixando o arquivo yaml desta forma:***   
+
+`
+services:
+  database:
+    image: "postgres:16.0-alpine3.18"
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+`
+
 ## DataBase
 ### access PostgresSQL
 `psql --host=localhost --username=postgres --port=5432`
