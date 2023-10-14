@@ -15,15 +15,15 @@ Created an .env file to add the password:
 
 ***Leaving the yaml file like this:***   
 
-`
-services:  
-  database:  
-      image: "postgres:16.0-alpine3.18"  
-      environment:  
-        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    ports:  
-      - "5432:5432"
-`
+```yaml
+services:
+database:
+image: "postgres:16.0-alpine3.18"
+environment:
+POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+ports:
+- "5432:5432"
+```
 
 ## DataBase
 ### access PostgresSQL
