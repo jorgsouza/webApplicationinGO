@@ -11,12 +11,12 @@ import (
 
 var temp = template.Must(template.ParseGlob("templates/*.html"))
 
-func Index(w http.ResponseWriter, r *http.Request) {
+func Index(w http.ResponseWriter, _ *http.Request) {
 	allProducts := models.SearchAllProducts()
 	temp.ExecuteTemplate(w, "Index", allProducts)
 }
 
-func New(w http.ResponseWriter, r *http.Request) {
+func New(w http.ResponseWriter, _ *http.Request) {
 	temp.ExecuteTemplate(w, "New", nil)
 }
 
@@ -39,13 +39,13 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 
 		models.CreateNewProduct(name, description, priceConvertedToFloat, quantityConvertedToInt)
 	}
-	http.Redirect(w, r, "/", 301)
+	http.Redirect(w, r, "/", http.StatusMovedPermanently)
 }
 
 func Delete(w http.ResponseWriter, r *http.Request) {
 	idProduct := r.URL.Query().Get("id")
 	models.DeleteProduct(idProduct)
-	http.Redirect(w, r, "/", 301)
+	http.Redirect(w, r, "/", http.StatusMovedPermanently)
 }
 
 func Edit(w http.ResponseWriter, r *http.Request) {
@@ -79,5 +79,5 @@ func Update(w http.ResponseWriter, r *http.Request) {
 
 		models.UpdateProduct(idConvertedToInt, name, description, priceConvertedToFloat, quantityConvertedToInt)
 	}
-	http.Redirect(w, r, "/", 301)
+	http.Redirect(w, r, "/", http.StatusMovedPermanently)
 }
