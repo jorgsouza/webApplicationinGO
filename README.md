@@ -5,16 +5,20 @@ This repository is exclusively for the study of go lang in a web application
 As the compose.yaml file is inside the infra folder and not in the root as usual, it's necessary to include `-f infra/compose.yaml`.  
 This way, docker locates the file to upload the container with the correct settings.
 
+
+*=>** *The command is used to start Docker Compose services defined in a specific compose file.* **<=**
 ```shell
 docker compose -f infra/compose.yaml up -d  
 
 docker compose -f infra/compose.yaml down
 ```
-**=>** *Command to delete docker, if you use the command everything will be lost* **<=**
 
 ## .env && compose.yaml
 Created an .env file to add the password:  
-`POSTGRES_PASSWORD=pass`
+```env
+POSTGRES_PASSWORD=pass
+```
+
 
 
 ***Leaving the yaml file like this:***   
@@ -57,15 +61,16 @@ INSERT INTO products (name,description,price,quantity) VALUES ('Glasses', 'Hyper
 ```
 
 ## Stopping Docker Container
+
+**=>** The docker ps command is used to list all Docker containers running on the host **<=**
 ```shell
 docker ps
 ```
-**=>** list running containers **<=**
-
+**=>** If you want to shut down the container, just use the docker stop command. It takes the ID or name of the container as an argument.**<=**
 ```shell
 docker stop <nome do container>
 ```
-**=>** *Command to stop container, the container will not be deleted* **<=**
+
 
 
 # Run
