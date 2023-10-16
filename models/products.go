@@ -1,6 +1,6 @@
 package models
 
-import "github.com/jorgsouza/webApplication/db"
+import "github.com/jorgsouza/webApplication/internal/database"
 
 type Product struct {
 	Id                int
@@ -10,7 +10,7 @@ type Product struct {
 }
 
 func SearchAllProducts() []Product {
-	db := db.DatabaseConnect()
+	db := database.DatabaseConnect()
 
 	selectAllProducts, err := db.Query("SELECT * FROM products ORDER BY id ASC")
 	if err != nil {
@@ -43,7 +43,7 @@ func SearchAllProducts() []Product {
 }
 
 func CreateNewProduct(name string, description string, price float64, quantity int) {
-	db := db.DatabaseConnect()
+	db := database.DatabaseConnect()
 
 	sqlInsertInto, err := db.Prepare("INSERT INTO products (name,description,price,quantity) values($1,$2,$3,$4)")
 	if err != nil {
@@ -55,7 +55,7 @@ func CreateNewProduct(name string, description string, price float64, quantity i
 }
 
 func DeleteProduct(id string) {
-	db := db.DatabaseConnect()
+	db := database.DatabaseConnect()
 
 	deleteProduct, err := db.Prepare("delete from products where id=$1")
 	if err != nil {
@@ -67,7 +67,7 @@ func DeleteProduct(id string) {
 }
 
 func EditProduct(id string) Product {
-	db := db.DatabaseConnect()
+	db := database.DatabaseConnect()
 
 	productDbReturned, err := db.Query("SELECT * FROM products where id=$1", id)
 	if err != nil {
@@ -97,7 +97,7 @@ func EditProduct(id string) Product {
 }
 
 func UpdateProduct(id int, name string, description string, price float64, quantity int) {
-	db := db.DatabaseConnect()
+	db := database.DatabaseConnect()
 
 	updateProduct, err := db.Prepare("update products set name=$1, description=$2, price=$3, quantity=$4 where id=$5")
 	if err != nil {

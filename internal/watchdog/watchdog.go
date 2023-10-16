@@ -5,7 +5,7 @@ import (
 	"os"
 	"os/signal"
 
-	dkr "github.com/jorgsouza/webApplication/docker"
+	dkr "github.com/jorgsouza/webApplication/internal/config/docker"
 )
 
 func SetupSignalHandling() {

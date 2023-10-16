@@ -3,8 +3,8 @@ package main
 import (
 	"net/http"
 
+	"github.com/jorgsouza/webApplication/internal/watchdog"
 	"github.com/jorgsouza/webApplication/routes"
-	"github.com/jorgsouza/webApplication/watchdog"
 )
 
 func main() {
