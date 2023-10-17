@@ -71,8 +71,6 @@ docker ps
 docker stop <nome do container>
 ```
 
-
-
 # Run
 ```go
 go run cmd/webApplicationInGo/main.go
