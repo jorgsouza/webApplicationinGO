@@ -6,6 +6,7 @@ import (
 	"os/signal"
 
 	dkr "github.com/jorgsouza/webApplication/internal/config/docker"
+	"github.com/jorgsouza/webApplication/internal/database"
 )
 
 func SetupSignalHandling() {
@@ -22,7 +23,7 @@ func SetupSignalHandling() {
 
 		os.Exit(0)
 	}()
-	if err := dkr.StartDatabaseContainer(); err != nil {
+	if err := dkr.StartDatabaseContainer(database.DatabaseConnect()); err != nil {
 		fmt.Println("Error when starting the database container:", err)
 		os.Exit(1)
 	}

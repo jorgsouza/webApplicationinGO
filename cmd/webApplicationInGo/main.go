@@ -8,9 +8,9 @@ import (
 )
 
 func main() {
-
 	watchdog.SetupSignalHandling()
 
 	routes.LoadsRoutes()
 	http.ListenAndServe(":8080", nil)
+
 }

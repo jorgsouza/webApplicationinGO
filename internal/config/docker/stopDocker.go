@@ -1,4 +1,4 @@
-package infra
+package docker
 
 import "os/exec"
 
