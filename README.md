@@ -75,7 +75,7 @@ docker stop <nome do container>
 
 # Run
 ```go
-go run main.go
+go run cmd/webApplicationInGo/main.go
 ```
 
 
