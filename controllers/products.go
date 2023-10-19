@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -44,6 +45,7 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 
 func Delete(w http.ResponseWriter, r *http.Request) {
 	idProduct := r.URL.Query().Get("id")
+	fmt.Printf("ID do produto a ser excluído: %s\n", idProduct)
 	models.DeleteProduct(idProduct)
 	http.Redirect(w, r, "/", http.StatusMovedPermanently)
 }
